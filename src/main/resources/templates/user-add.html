@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${admin_text}"></title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div th:insert="blocks/header :: header"></div>
+
+
+<div class="container mt-5">
+    <h1>Add users</h1>
+    <form action="/admin/user-add" method="post">
+        <input type="text" name="username" placeholder="name" class="form-control">
+        <input type="password" name="password" placeholder="password" class="form-control">
+        <button type="submit" class="btn btn-success">Add user</button>
+    </form>
+    <p th:text="${message}"></p>
+</div>
+
+
+
+</body>
+</html>

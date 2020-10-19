@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${admin_text}"></title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div th:insert="blocks/header :: header"></div>
+
+
+<div class="container">
+    <h1 th:text="${admin_text}"></h1>
+    <div class="container">
+        <div class="row row-cols-4">
+            <a href="/admin/users"><div class="col">Пользователи</div></a>
+            <a href="/admin/films"><div class="col">Фильмы</div></a>
+        </div>
+    </div>
+    <!--<table class="table">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Login</th>
+            <th scope="col">Password</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="u:${users}">
+            <td th:text="${u.getId()}"></td>
+            <td th:text="${u.getUsername()}"></td>
+            <td th:text="${u.getPassword()}"></td>
+        </tr>
+
+        </tbody>
+    </table>-->
+
+</div>
+
+
+</body>
+</html>

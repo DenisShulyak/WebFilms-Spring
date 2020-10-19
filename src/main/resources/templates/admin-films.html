@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${admin_text}"></title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div th:insert="blocks/header :: header"></div>
+
+
+<div class="container">
+    <h1 th:text="${admin_text}"></h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Url</th>
+            <th scope="col">Button edit</th>
+            <th scope="col">Button delete</th>
+            <th scope="col">Button comments</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="f:${films}">
+            <td th:text="${f.getId()}"></td>
+            <td th:text="${f.getName()}"></td>
+            <td th:text="${f.getUrl()}"></td>
+            <td>
+                <form method="get" action="/admin/film/edit">
+                    <button type="submit" name="id" class="btn btn-info" th:value="${f.getId()}">Edit</button>
+                </form>
+            </td>
+            <td>
+                <form method="post" action="/admin/film/delete">
+                    <button type="submit" name="id" class="btn btn-danger" th:value="${f.getId()}">Delete</button>
+                </form>
+            </td>
+            <td>
+                <form method="post" action="/admin/film/comments">
+                    <button type="submit" name="id" class="btn btn-secondary" th:value="${f.getId()}">Comments</button>
+                </form>
+            </td>
+            <!--<td><a th:href="@{'/admin/user/' + ${u.getId()}}"><button type="button" class="btn btn-info">Info</button></a></td>-->
+        </tr>
+
+        </tbody>
+    </table>
+
+    <div class="col-3">
+        <a href="/admin/film-add"><button type="button" class="btn btn-info">Add film</button></a>
+    </div>
+
+</div>
+
+
+</body>
+</html>

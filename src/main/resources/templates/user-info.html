@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${admin_text}"></title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div th:insert="blocks/header :: header"></div>
+
+
+<div class="container" mt-5 >
+    <div class="alert alert-info mt-3">
+        <h3 th:text="${user.get().getUsername()}​​"></h3>
+        <p th:text="${user.get().getPassword()}">
+        <a th:href="'/blog/' + ${user.get().getId()}​​ + '/edit'" class="btn btn-warning">Редактировать</a>
+        <br>
+        <form th:action="'/blog/' + ${user.get().getId()}​​ + '/remove'" method="post">
+            <button type="submit" class="btn btn-warning">Удалить</button>
+        </form>
+    </div>
+</div>
+
+
+
+</body>
+</html>

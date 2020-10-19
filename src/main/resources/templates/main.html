@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div th:insert="blocks/header :: header"></div>
+
+<div class="container">
+    <form action="/find" method="get">
+        <input class="form-group" name="name" placeholder="Film name">
+        <button type="submit"  class="btn btn-danger" >Find</button>
+
+
+    </form>
+        <a href="/main" class="form-group"><button class="btn btn-danger" >All films</button></a>
+
+    <div th:each="f:${films}" class="jumbotron">
+    <h1 th:text="${f.getName()}" class="display-4"></h1>
+        <a th:href="${f.getUrl()}"><button type="button" class="btn btn-success">Let's go to move</button></a>
+    <hr class="my-4">
+    <p class="lead">
+        <form method="get" action="/film/comment">
+        <button type="submit" th:value="${f.getId()}" name="id" class="btn btn-secondary">Do comment</button>
+        </form>
+
+    </p>
+</div>
+    <form class="p-2 text-dark" th:action="@{/logout}" method="post">
+        <button type="submit" class="btn btn-secondary">Log out</button>
+    </form>
+</div>
+
+
+</body>
+</html>
